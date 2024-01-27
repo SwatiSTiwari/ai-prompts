@@ -30,24 +30,55 @@ const Nav = () => {
           </div>
           {/* desktop navigation */}
           <div className='sm:flex hidden '>
-            {isUserLoggedIn ? (<div className='flex gap-3 md:gap-5'>
-              <Link href='/create-prompt' className='fixed top-4  right-[190px]  rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center'>
-create post
-
-              </Link>
-              <button type="button" onClick={signOut}className=' fixed top-4 right-[60px] rounded-full border border-black bg-transparent py-1.5 px-5 text-black transition-all hover:bg-black hover:text-white text-center text-sm font-inter flex items-center justify-center'>signOut</button>
-              <Link href='/profile' >
-                <Image src={logoImage} width={30} height={30} className='fixed  top-4 right-6'/>
-              </Link>
-            </div>) : (<>
-            {Provider && Object.values(Provider).map((provider) => (
-              <div key={provider.name}>
-                <button onClick={() => signIn(provider.id)} className='fixed top-4 right-3 rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center'>Sign in</button>
+            {isUserLoggedIn ? (
+              <div className='flex gap-3 md:gap-5'>
+                <Link href='/create-prompt' className='fixed top-4  right-[190px]  rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center'>
+                  create post
+                </Link>
+                <button type="button" onClick={signOut} className='fixed top-4 right-[60px] rounded-full border border-black bg-transparent py-1.5 px-5 text-black transition-all hover:bg-black hover:text-white text-center text-sm font-inter flex items-center justify-center'>
+                  signOut
+                </button>
+                <Link href='/profile'>
+                  <Image src={logoImage} width={30} height={30} className='fixed  top-4 right-6'/>
+                </Link>
               </div>
-            ))}
-            
-
-            </>)}
+            ) : (
+              <>
+                {Provider && Object.values(Provider).map((provider) => (
+                  <div key={provider.name}>
+                    <button onClick={() => signIn(provider.id)} className='fixed top-4 right-3 rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center'>
+                      Sign in
+                    </button>
+                  </div>
+                ))}
+              </>
+            )}
+          </div>
+          {/* mobile navigation */}
+          <div className='sm:hidden'>
+            {isUserLoggedIn ? (
+              <div className='flex flex-col gap-3 md:gap-5'>
+                <Link href='/create-prompt' className=' fixed top-4  right-[190px] rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center'>
+                  create post
+                </Link>
+                <button type="button" onClick={signOut} className=' fixed top-4 right-[60px] rounded-full border border-black bg-transparent py-1.5 px-5 text-black transition-all hover:bg-black hover:text-white text-center text-sm font-inter flex items-center justify-center'>
+                  signOut
+                </button>
+                <Link href='/profile'>
+                  <Image src={logoImage} width={30} height={30} className='fixed  top-4 right-6' />
+                </Link>
+              </div>
+            ) : (
+              <>
+                {Provider && Object.values(Provider).map((provider) => (
+                  <div key={provider.name}>
+                    <button onClick={() => signIn(provider.id)} className=' fixed top-4 right-3 rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm font-inter flex items-center justify-center'>
+                      Sign in
+                    </button>
+                  </div>
+                ))}
+              </>
+            )}
           </div>
         </Link>
       </nav>
